@@ -1,0 +1,114 @@
+/* Background animation */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(270deg, #ffeb3b, #ffc107, #ff9800);
+    background-size: 600% 600%;
+    animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Game box */
+.game {
+    background: #fffde7;
+    width: 380px;
+    margin: 60px auto;
+    padding: 25px;
+    border-radius: 15px;
+    border: 3px solid #f9a825;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: #f57f17;
+}
+
+button {
+    margin: 6px;
+    padding: 10px;
+    width: 90px;
+    font-weight: bold;
+    background: linear-gradient(to right, #fbc02d, #f57f17);
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.buttons button {
+    width: 45px;
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #e65100;
+}
+
+/* Result animations */
+.win { animation: pop 0.8s ease; color: green; }
+.lose { animation: shake 0.6s ease; color: red; }
+.draw { animation: fadeIn 1s ease; color: orange; }
+
+@keyframes pop {
+    0% {transform: scale(0.5); opacity: 0;}
+    60% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+@keyframes shake {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-5px);}
+    50% {transform: translateX(5px);}
+    75% {transform: translateX(-5px);}
+    100% {transform: translateX(0);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: #fffde7;
+    width: 300px;
+    margin: 150px auto;
+    padding: 25px;
+    border-radius: 15px;
+    animation: pop 0.6s ease;
+}
+
+/* Confetti */
+#confetti span {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    top: -10px;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}

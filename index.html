@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hand Cricket Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Confetti -->
+<div id="confetti"></div>
+
+<!-- Game Box -->
+<div class="game">
+    <h1>Hand Cricket 🏏</h1>
+
+    <div id="choice">
+        <p>Choose Bat or Bowl</p>
+        <button onclick="choose('bat')">BAT</button>
+        <button onclick="choose('bowl')">BOWL</button>
+    </div>
+
+    <div id="playArea" style="display:none;">
+        <p><b>Status:</b> <span id="status"></span></p>
+        <p><b>Your Score:</b> <span id="userScore">0</span></p>
+        <p><b>Opponent Score:</b> <span id="compScore">0</span></p>
+
+        <h3>Choose a Number</h3>
+        <div class="buttons">
+            <button onclick="play(1)">1</button>
+            <button onclick="play(2)">2</button>
+            <button onclick="play(3)">3</button>
+            <button onclick="play(4)">4</button>
+            <button onclick="play(5)">5</button>
+            <button onclick="play(6)">6</button>
+        </div>
+
+        <p id="message"></p>
+    </div>
+</div>
+
+<!-- Result Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2 id="finalResult"></h2>
+        <button onclick="restart()">Play Again</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
