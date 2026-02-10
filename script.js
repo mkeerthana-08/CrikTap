@@ -4,6 +4,22 @@ let mode = "";
 let phase = 1;
 let gameOver = false;
 
+const batBtn = document.getElementById("batBtn");
+const bowlBtn = document.getElementById("bowlBtn");
+const restartBtn = document.getElementById("restartBtn");
+const numberButtons = document.getElementById("numberButtons");
+
+for (let i = 1; i <= 6; i++) {
+    let btn = document.createElement("button");
+    btn.innerText = i;
+    btn.addEventListener("click", () => play(i));
+    numberButtons.appendChild(btn);
+}
+
+batBtn.addEventListener("click", () => choose("bat"));
+bowlBtn.addEventListener("click", () => choose("bowl"));
+restartBtn.addEventListener("click", restart);
+
 function choose(choice) {
     mode = choice;
     document.getElementById("choice").style.display = "none";
@@ -18,7 +34,7 @@ function play(userRun) {
 
     if (userRun === compRun) {
         document.getElementById("message").innerText =
-            "OUT! You: " + userRun + " | Opponent: " + compRun;
+            `OUT! You: ${userRun} | Opponent: ${compRun}`;
 
         if (phase === 1) {
             phase = 2;
@@ -37,7 +53,13 @@ function play(userRun) {
         }
 
         document.getElementById("message").innerText =
-            "You: " + userRun + " | Opponent: " + compRun;
+            `You: ${userRun} | Opponent: ${compRun}`;
+
+        if (phase === 2) {
+            if (userScore > compScore || compScore > userScore) {
+                endGame();
+            }
+        }
     }
 }
 
@@ -88,10 +110,15 @@ function restart() {
 
 function startConfetti() {
     let confetti = document.getElementById("confetti");
+    let colors = ["#fbc02d", "#ff5722", "#4caf50", "#2196f3", "#e91e63"];
+
     for (let i = 0; i < 60; i++) {
         let piece = document.createElement("span");
         piece.style.left = Math.random() * 100 + "vw";
-        piece.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDuration =
+            Math.random() * 2 + 2 + "s";
         confetti.appendChild(piece);
     }
 }
