@@ -1,9 +1,8 @@
-/* Background animation */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(270deg, #ffeb3b, #ffc107, #ff9800);
     background-size: 600% 600%;
     animation: bgMove 10s ease infinite;
@@ -15,11 +14,11 @@ body {
     100% {background-position: 0% 50%;}
 }
 
-/* Game box */
 .game {
     background: #fffde7;
-    width: 380px;
-    margin: 60px auto;
+    width: 90%;
+    max-width: 400px;
+    margin: 8vh auto;
     padding: 25px;
     border-radius: 15px;
     border: 3px solid #f9a825;
@@ -36,14 +35,18 @@ button {
     width: 90px;
     font-weight: bold;
     background: linear-gradient(to right, #fbc02d, #f57f17);
-    color: black;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 button:hover {
     transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 .buttons button {
@@ -56,23 +59,20 @@ button:hover {
     color: #e65100;
 }
 
-/* Result animations */
-.win { animation: pop 0.8s ease; color: green; }
-.lose { animation: shake 0.6s ease; color: red; }
-.draw { animation: fadeIn 1s ease; color: orange; }
+.win { color: green; animation: pop 0.6s ease; }
+.lose { color: red; animation: shake 0.6s ease; }
+.draw { color: orange; animation: fadeIn 1s ease; }
 
 @keyframes pop {
     0% {transform: scale(0.5); opacity: 0;}
-    60% {transform: scale(1.2);}
-    100% {transform: scale(1);}
+    100% {transform: scale(1); opacity: 1;}
 }
 
 @keyframes shake {
-    0% {transform: translateX(0);}
+    0%,100% {transform: translateX(0);}
     25% {transform: translateX(-5px);}
     50% {transform: translateX(5px);}
     75% {transform: translateX(-5px);}
-    100% {transform: translateX(0);}
 }
 
 @keyframes fadeIn {
@@ -80,7 +80,6 @@ button:hover {
     to {opacity: 1;}
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -91,20 +90,17 @@ button:hover {
 .modal-content {
     background: #fffde7;
     width: 300px;
-    margin: 150px auto;
+    margin: 20vh auto;
     padding: 25px;
     border-radius: 15px;
-    animation: pop 0.6s ease;
 }
 
-/* Confetti */
 #confetti span {
     position: fixed;
     width: 8px;
     height: 8px;
-    background: gold;
     top: -10px;
-    animation: fall 3s linear infinite;
+    animation: fall linear forwards;
 }
 
 @keyframes fall {
